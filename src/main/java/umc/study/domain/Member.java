@@ -1,17 +1,22 @@
 package umc.study.domain;
 
 import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 import umc.study.domain.common.BaseEntity;
 import umc.study.domain.enums.Gender;
 import umc.study.domain.enums.MemberRole;
 import umc.study.domain.enums.MemberStatus;
 import umc.study.domain.mapping.MemberMission;
+import umc.study.domain.mapping.MemberPrefer;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+@DynamicUpdate
+@DynamicInsert
 @Entity
 @Getter
 @Builder
@@ -33,6 +38,10 @@ public class Member extends BaseEntity {
     @Column(columnDefinition = "VARCHAR(200)")
     private String address;
 
+    @Column(columnDefinition = "VARCHAR(200)")
+    private String specAddress;
+
+    @ColumnDefault("0")
     private Integer point;
 
     @Enumerated(EnumType.STRING)
