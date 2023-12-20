@@ -9,6 +9,7 @@ import java.util.List;
 
 @Entity
 @Getter
+@Setter
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
@@ -26,7 +27,13 @@ public class Review extends BaseEntity {
     @JoinColumn(name = "mission_id")
     private Mission mission;
 
+    @ManyToOne
+    @JoinColumn(name = "store_id")
+    private Store store;
+
     private Float rating;
+
+    private String title;
 
     @Column(columnDefinition = "VARCHAR(2000)")
     private String content;

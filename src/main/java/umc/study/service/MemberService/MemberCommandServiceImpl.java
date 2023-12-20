@@ -9,9 +9,13 @@ import umc.study.converter.MemberConverter;
 import umc.study.converter.MemberPreferConverter;
 import umc.study.domain.FoodCategory;
 import umc.study.domain.Member;
+import umc.study.domain.enums.MissionStatus;
+import umc.study.domain.mapping.MemberMission;
 import umc.study.domain.mapping.MemberPrefer;
-import umc.study.repository.FoodCategoryRepository;
 import umc.study.repository.MemberRepository;
+import umc.study.repository.FoodCategoryRepository;
+import umc.study.repository.MissionRepository;
+import umc.study.repository.MemberMissionRepository;
 import umc.study.web.dto.MemberRequestDTO;
 
 import java.util.List;
@@ -24,6 +28,10 @@ public class MemberCommandServiceImpl implements MemberCommandService{
     private final MemberRepository memberRepository;
 
     private final FoodCategoryRepository foodCategoryRepository;
+
+    private final MissionRepository missionRepository;
+
+    private final MemberMissionRepository memberMissionRepository;
 
     @Override
     @Transactional
@@ -40,5 +48,17 @@ public class MemberCommandServiceImpl implements MemberCommandService{
         memberPreferList.forEach(memberPrefer -> {memberPrefer.setMember(newMember);});
 
         return memberRepository.save(newMember);
+    }
+
+    @Override
+    public MemberMission createMemberMission(Long missionId, Long memberId) {
+        MemberMission memberMission = MemberMission.builder()
+                .status(MissionStatus.PROGRESSING)
+                .build();
+        memberMission.setMember(memberRepository.findById(memberId).get());
+        memberMission.setMission(missionRepository.findById(missionId).get());
+        return memberMissionRepository.save(memberMission);
+
+
     }
 }
