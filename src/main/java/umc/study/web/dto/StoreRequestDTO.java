@@ -13,9 +13,9 @@ public class StoreRequestDTO {
         @NotBlank
         String title;
         @NotNull
-        Float rating;
+        Float score;
         @NotBlank
-        String content;
+        String body;
     }
 
     @Getter

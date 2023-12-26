@@ -31,12 +31,12 @@ public class Review extends BaseEntity {
     @JoinColumn(name = "store_id")
     private Store store;
 
-    private Float rating;
+    private Float score;
 
     private String title;
 
     @Column(columnDefinition = "VARCHAR(2000)")
-    private String content;
+    private String body;
 
     @Column(columnDefinition = "VARCHAR(2000)")
     private String reply;
