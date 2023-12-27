@@ -26,7 +26,7 @@ public class Mission extends BaseEntity {
     private Store store;
 
     @Column(columnDefinition = "VARCHAR(100)")
-    private String content;
+    private String missionSpec;
 
     @Column(columnDefinition = "VARCHAR(10)")
     private String ownerCode;

@@ -32,7 +32,7 @@ public class StoreConverter {
         return Mission.builder()
                 .reward(request.getReward())
                 .deadline(LocalDate.now())
-                .content(request.getContent())
+                .missionSpec(request.getMissionSpec())
                 .build();
     }
 
