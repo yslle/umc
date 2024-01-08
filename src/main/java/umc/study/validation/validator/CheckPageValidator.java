@@ -14,8 +14,6 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class CheckPageValidator implements ConstraintValidator<CheckPage, Integer> {
 
-    private final StoreQueryService storeQueryService;
-
     @Override
     public void initialize(CheckPage constraintAnnotation) {
         ConstraintValidator.super.initialize(constraintAnnotation);
@@ -26,7 +24,7 @@ public class CheckPageValidator implements ConstraintValidator<CheckPage, Intege
 
         if (value < 0){
             context.disableDefaultConstraintViolation();
-            context.buildConstraintViolationWithTemplate(ErrorStatus.STORE_NOT_FOUND.toString()).addConstraintViolation();
+            context.buildConstraintViolationWithTemplate(ErrorStatus.INVALID_PAGE.toString()).addConstraintViolation();
             return false;
         }
         return true;
