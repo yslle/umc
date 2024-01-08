@@ -62,4 +62,3 @@ jobs:
           region: ap-northeast-1
           deployment_package: deploy/deploy.zip
           wait_for_deployment: false
-
